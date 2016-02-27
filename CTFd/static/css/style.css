@@ -366,5 +366,12 @@ table{
 .done-row {
     margin: 0px;
 }
-
+.egg {
+    position:relative;
+}
+.eggspot {
+    position:absolute;
+    bottom:0;
+    right:0;
+}
 /* END OF INPUT CSS */

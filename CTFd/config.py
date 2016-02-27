@@ -16,7 +16,7 @@ SESSION_TYPE = "filesystem"
 SESSION_FILE_DIR = "/tmp/flask_session"
 SESSION_COOKIE_HTTPONLY = True
 PERMANENT_SESSION_LIFETIME = 604800 # 7 days in seconds
-HOST = ".ctfd.io"
+HOST = "52.36.189.212"
 UPLOAD_FOLDER = os.path.normpath('static/uploads')
 TRUSTED_PROXIES = [
     '^127\.0\.0\.1$',
