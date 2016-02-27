@@ -1,0 +1,15 @@
+CONFIG = {
+    'mode': 'wsgi',
+    'working_dir': '/home/ubuntu/CTFd',
+      'python': '/usr/bin/python',
+    'user': 'ubuntu',
+    'group': 'ubuntu',
+    'args': (
+        '--bind=0.0.0.0:8000',
+        '--workers=1',
+        '--umask=0027',
+        '--log-level=info',
+        '--access-logfile=/var/log/gunicorn/ctfd_access.log',
+        'CTFd:create_app()',
+    ),
+}

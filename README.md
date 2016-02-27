@@ -1,7 +1,5 @@
-![](https://raw.githubusercontent.com/isislab/CTFd/master/CTFd/static/img/logo.png)
+![](https://raw.githubusercontent.com/panw-gsrt/CTFd/master/CTFd/static/img/logo.png)
 ====
-
-CTFd is a CTF in a can. Easily modifiable and has everything you need to run a jeopardy style CTF.
 
 Install: 
  1. `./prepare.sh` to install dependencies using apt.
@@ -9,9 +7,22 @@ Install:
  3. Use `python serve.py` in a terminal to drop into debug mode.
  4. [Here](https://github.com/isislab/CTFd/wiki/Deployment) are some deployment options
 
-Live Demo:
-[http://demo.ctfd.io/](http://demo.ctfd.io/)
+Install gunicorn from apt repository: sudo apt-get install gunicorn
+Create gunicorn config file for CTFd: sudo vim /etc/gunicorn.d/ctfd
+CONFIG = {
+    'mode': 'wsgi',
+    'working_dir': '/home/ubuntu/CTFd',
+      'python': '/usr/bin/python',
+    'user': 'ubuntu',
+    'group': 'ubuntu',
+    'args': (
+        '--bind=0.0.0.0:8000',
+        '--workers=1',
+        '--umask=0027',
+        '--log-level=info',
+        '--access-logfile=/var/log/gunicorn/ctfd_access.log',
+        'CTFd:create_app()',
+    ),
+}
 
-Logo by [Laura Barbera](http://www.laurabb.com/)
-
-Theme by [Christopher Thompson](https://github.com/breadchris)
+service gunicorn start
